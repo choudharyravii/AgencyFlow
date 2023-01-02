@@ -12,31 +12,38 @@ class Feedusers extends ChangeNotifier {
     Feeduser(
       username: 'Chorizo Canapes',
       image:
-          'https://www.kindpng.com/picc/m/690-6904538_men-profile-icon-png-image-free-download-searchpng.png',
+          'https://avatoon.me/wp-content/uploads/2021/09/Cartoon-Pic-Ideas-for-DP-Profile-01.png',
       time: '2m ago',
       discription:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
     ),
     Feeduser(
-      username: 'zjhorizo Canapes',
+      username: 'Rahorizo Canapes',
       image:
-          'https://www.pngitem.com/pimgs/m/360-3603114_client-male-earth-clients-profile-icon-free-png.png',
+          'https://avatoon.me/wp-content/uploads/2021/09/Cartoon-Pic-Ideas-for-DP-Profile11.png',
       time: '2m ago',
       discription:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
     ),
     Feeduser(
-      username: 'thorizo Canapes',
-      image:
-          'https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg',
+      username: 'Thorizo Canapes',
+      image: 'https://pbs.twimg.com/media/ExyX1WAVcAwX_YB.jpg',
       time: '2m ago',
       discription:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
     ),
-     Feeduser(
-      username: 'thorizo Canapes',
+    Feeduser(
+      username: 'Lahorizo Canapes',
       image:
-          'https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg',
+          'https://avatoon.me/wp-content/uploads/2021/09/Cartoon-Pic-Ideas-for-DP-Profile-03-768x768.png',
+      time: '2m ago',
+      discription:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+    ),
+    Feeduser(
+      username: 'Lahorizo Canapes',
+      image:
+          'https://avatoon.me/wp-content/uploads/2021/09/Cartoon-Pic-Ideas-for-DP-Profile-01.png',
       time: '2m ago',
       discription:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',

@@ -45,7 +45,7 @@ class _FeedState extends State<Feed> {
       body: Consumer<Feedusers>(builder: (context, snap, child) {
         return ListView.builder(
             shrinkWrap: true,
-            itemCount: 4,
+            itemCount: 5,
             itemBuilder: (BuildContext context, int index) {
               return Column(
                 children: [
@@ -53,6 +53,9 @@ class _FeedState extends State<Feed> {
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     // mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      SizedBox(
+                        height: Common.displayHeight(context) * 0.03,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -68,7 +71,7 @@ class _FeedState extends State<Feed> {
                                       ),
                                       scale: 4))),
                           SizedBox(
-                            width: Common.displayWidth(context) * 0.08,
+                            width: Common.displayWidth(context) * 0.03,
                           ),
                           Container(
                             child: Text(
@@ -78,7 +81,7 @@ class _FeedState extends State<Feed> {
                             ),
                           ),
                           SizedBox(
-                            width: Common.displayWidth(context) * 0.10,
+                            width: Common.displayWidth(context) * 0.20,
                           ),
                           Container(
                             child: Text(
@@ -95,7 +98,7 @@ class _FeedState extends State<Feed> {
                       // ignore: prefer_const_constructors
                       SizedBox(
                         width: Common.displayWidth(context) * 0.8,
-                        height: Common.displayHeight(context) * 0.1,
+                        height: Common.displayHeight(context) * 0.05,
                         child: Center(
                           child: Text(
                             snap.myList[index].discription,
@@ -106,14 +109,14 @@ class _FeedState extends State<Feed> {
                       ),
                     ],
                   ),
+                  SizedBox(
+                    height: Common.displayHeight(context) * 0.02,
+                  ),
                   Container(
                     width: double.infinity,
                     height: Common.displayHeight(context) * 0.002,
                     color: AppColors.grey10,
                   ),
-                  SizedBox(
-                    height: Common.displayHeight(context) * 0.03,
-                  )
                 ],
               );
             });

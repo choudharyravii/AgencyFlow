@@ -42,8 +42,8 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                     // mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                          width: Common.displayWidth(context) * 0.23,
-                          height: Common.displayHeight(context) * 0.12,
+                          width: Common.displayWidth(context) * 0.25,
+                          height: Common.displayHeight(context) * 0.10,
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
@@ -53,24 +53,29 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                   ),
                                   scale: 4))),
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         // ignore: prefer_const_literals_to_create_immutables
                         children: [
                           // ignore: prefer_const_constructors
                           Padding(
                             padding: const EdgeInsets.only(top: 22.0),
                             child: SizedBox(
-                              height: Common.displayHeight(context) * 0.04,
+                              height: Common.displayHeight(context) * 0.03,
                               child: const Text(
                                 Constants.AgencyNames,
                                 style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: Constants.fontbasic),
                               ),
                             ),
                           ),
                           const Text(
                             Constants.personemail,
                             style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.w400),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: Constants.fontbasic),
                           ),
                           Common.customsmallbutton(context, "Edit Profile", () {
                             Navigator.pushNamed(context, "/EditProfileScreen");
@@ -91,7 +96,9 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                 ListTile(
                     title: const Text(
                       "Notification Settings",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: Constants.fontbasic),
                     ),
                     trailing: Switch(
                         value: notificationValue,

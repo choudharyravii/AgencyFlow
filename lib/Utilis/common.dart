@@ -114,6 +114,18 @@ class Common {
     );
   }
 
+  static privterm(String text, TextDecoration underlines) {
+    return Text(
+      text,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        decoration: underlines,
+        fontSize: 14,
+        color: Colors.white,
+      ),
+    );
+  }
+
   static gradiantliner3(Widget child) {
     return Stack(
       children: [
@@ -235,7 +247,7 @@ class Common {
           style: TextStyle(
             color: Colors.white,
             fontSize: Common.displayWidth(context) * 0.035,
-            fontFamily: 'Proxima Nova Black',
+            fontFamily: Constants.fontbasic,
           ),
         ),
         style: ButtonStyle(

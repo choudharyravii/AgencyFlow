@@ -22,16 +22,20 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Common.customElevatedButton(context, Constants.SplashButton1, () {
-            Navigator.pushNamed(context, '/loginsignup');
-          }, AppColors.buttonGrey),
+          SizedBox(
+            width: Common.displayWidth(context) * 0.9,
+            child: Common.customElevatedButton(context, Constants.SplashButton1,
+                () {
+              Navigator.pushNamed(context, '/loginsignup');
+            }, AppColors.buttonGrey),
+          ),
+
           // ignore: prefer_const_constructors
           SizedBox(
             height: Common.displayHeight(context) * 0.02,
           ),
-          Padding(
-            padding:
-                EdgeInsets.only(bottom: Common.displayHeight(context) * 0.03),
+          SizedBox(
+            width: Common.displayWidth(context) * 0.9,
             child: Common.customElevatedButton(context, Constants.SplashButton2,
                 () {
               Navigator.pushNamed(context, '/loginsignup');

@@ -37,70 +37,77 @@ class _HomeScreenState extends State<HomeScreen> {
                   EdgeInsets.only(top: Common.displayHeight(context) * 0.03),
               width: Common.displayWidth(context),
               height: Common.displayHeight(context),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: Common.displayWidth(context) * 0.94,
-                      child: searchTextField(),
+              child: Column(
+                children: [
+                  Container(
+                    width: Common.displayWidth(context) * 0.94,
+                    child: searchTextField(),
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: Common.displayHeight(context) * 0.02,
+                          ),
+                          Image.asset(
+                            "assets/Images/mic.png",
+                            scale: 2.5,
+                          ),
+                          Text(
+                            "Hi Mess How are you . now what i do ",
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: AppColors.iconColor,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: Common.displayHeight(context) * 0.05,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Cards("assets/Images/document2.png", "Documents",
+                                  () {
+                                Navigator.pushNamed(context, "/DocumentScreen");
+                              }),
+                              SizedBox(
+                                width: Common.displayWidth(context) * 0.05,
+                              ),
+                              Cards("assets/Images/laws.png", "Laws", () {
+                                Navigator.pushNamed(context, "/LawsListScreen");
+                              }),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Common.displayHeight(context) * 0.03,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Cards("assets/Images/personalnotes.png",
+                                  "Personal Notes", () {
+                                Navigator.pushNamed(
+                                    context, "/PersonalNotesListScreen");
+                              }),
+                              SizedBox(
+                                width: Common.displayWidth(context) * 0.05,
+                              ),
+                              Cards("assets/Images/rights.png", "Rights", () {
+                                Navigator.pushNamed(
+                                    context, '/RightListScreen');
+                              }),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Common.displayHeight(context) * 0.03,
+                          )
+                        ],
+                      ),
                     ),
-                    SizedBox(
-                      height: Common.displayHeight(context) * 0.02,
-                    ),
-                    Image.asset(
-                      "assets/Images/mic.png",
-                      scale: 1.5,
-                    ),
-                    Text(
-                      "Hi Mess How are you . now what i do ",
-                      style: TextStyle(
-                          fontSize: 12,
-                          color: AppColors.iconColor,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: Common.displayHeight(context) * 0.05,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Cards("assets/Images/document2.png", "Documents", () {
-                          Navigator.pushNamed(context, "/DocumentScreen");
-                        }),
-                        SizedBox(
-                          width: Common.displayWidth(context) * 0.05,
-                        ),
-                        Cards("assets/Images/laws.png", "Laws", () {
-                          Navigator.pushNamed(context, "/LawsListScreen");
-                        }),
-                      ],
-                    ),
-                    SizedBox(
-                      height: Common.displayHeight(context) * 0.03,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Cards(
-                            "assets/Images/personalnotes.png", "Personal Notes",
-                            () {
-                          Navigator.pushNamed(
-                              context, "/PersonalNotesListScreen");
-                        }),
-                        SizedBox(
-                          width: Common.displayWidth(context) * 0.05,
-                        ),
-                        Cards("assets/Images/rights.png", "Rights", () {
-                          Navigator.pushNamed(context, '/RightListScreen');
-                        }),
-                      ],
-                    ),
-                    SizedBox(
-                      height: Common.displayHeight(context) * 0.03,
-                    )
-                  ],
-                ),
+                  ),
+                ],
               ),
             )
           : Container(
@@ -126,7 +133,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           });
                           // Navigator.pushNamed(context, '/HomeRespectiveDocs');
                         },
-                        child: Image.asset("assets/Images/mic.png")),
+                        child: Image.asset(
+                          "assets/Images/mic.png",
+                          scale: 1.5,
+                        )),
                     Text(
                       "Ask a Question",
                       style: TextStyle(

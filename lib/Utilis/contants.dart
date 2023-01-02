@@ -11,7 +11,10 @@ class Constants {
   static const String agreeWithPrivacy =
       'Please Agree with Privacy Policy and Terms & Conditions';
   static const String next = 'Next';
-  static const String radiobuttonname = 'I agree with Privacy Policy';
+  static const String radiobuttonname = 'I agree with ';
+  static const String privacybuttonname = 'Privacy Policy ';
+  static const String orbuttonname = 'Or ';
+  static const String termbuttonname = 'Terms & Condition';
   static const String skip = 'Skip';
   static const String addReview = 'Add Review';
   static const String recommend = 'Recommend';
@@ -81,7 +84,8 @@ class Constants {
   static const String searchLocationName = 'Search location name';
 
   static const String marrisa = 'Marrisa';
-  static const String address = '2972 Westheimer Rd. Santa Ana, Illinois 85486 New York, US';
+  static const String address =
+      '2972 Westheimer Rd. Santa Ana, Illinois 85486 New York, US';
   static const String enumber = 'Email Id: Alliegrater@Gmail.Com';
   static const String pnumber = 'Phone Number: (207) 555-0119';
   static const String banks = 'Banks';
@@ -138,6 +142,7 @@ class Constants {
   static const String writeAComment = 'Write a comment...';
   static const String emptyEmail = 'Please enter Email';
   static const String emptyPassword = 'Please enter Password';
+  static const String newPassword = 'Dont Use Your Old Password';
   static const String emptyPhone = 'Please enter phone number';
   static const String emptyOtp = 'Please enter 4 digit OTP';
   static const String emptyUserName = 'Please enter username';
@@ -156,6 +161,10 @@ class Constants {
       'Password Should Contain Capital & Small Characters, Special Symbols & Digits';
   static const String passGreaterThan =
       'Password should be greater than 7 digits';
+  //  static const String cnfrmpass =
+  static const String cnfrmpass =
+      // 'Plaese Enter Same Password in Confirm Password';
+      'पहला आलो पासवर्ड घाल्यो है बो ही दुसर घालो';
   static const String passLessThan = 'Password should be less than 17 digits';
   static const String passNotMatch =
       'New Password and Confirm New Password not match';
@@ -176,18 +185,19 @@ class Constants {
   static const String StepVerification = '2 Step Verification';
   static const String StepVerificationdes =
       'A 6-digit verification code was just sent to ●●●●●●@gmail.com';
-  static const String code = 'Code';    
-  static const String Post = 'Post';    
-  static const String NewPassword = 'New Password';    
-  static const String ConfirmNewPassword = 'Confirm New Password';    
-  static const String UploadProfilePic = 'Upload Profile Pic';    
-  static const String AgencyName = 'Agency Name';    
-  static const String AgencyBio = 'Agency Bio';    
-  static const String AgencyVerification = 'Agency Verification';    
-  static const String AgencyNames = 'Hi Agency Name';    
-  static const String personemail = 'Person@Gmail.Com';    
-  static const String TypePost = 'Type Post Caption';    
-  static const String ChatwAgency = 'Chat with Agency';    
-  static const String policemanagement = "Police Management";  
-  static const String OfficerManagement = "Officer Management";  
+  static const String code = 'Code';
+  static const String Post = 'Post';
+  static const String NewPassword = 'New Password';
+  static const String ConfirmNewPassword = 'Confirm New Password';
+  static const String UploadProfilePic = 'Upload Profile Pic';
+  static const String AgencyName = 'Agency Name';
+  static const String AgencyBio = 'Agency Bio';
+  static const String AgencyVerification = 'Agency Verification';
+  static const String AgencyNames = 'Hi Agency Name';
+  static const String personemail = 'Person@Gmail.Com';
+  static const String TypePost = 'Type Post Caption';
+  static const String ChatwAgency = 'Chat with Agency';
+  static const String policemanagement = "Police Management";
+  static const String OfficerManagement = "Officer Management";
+  static const String fontbasic = "Schyler";
 }

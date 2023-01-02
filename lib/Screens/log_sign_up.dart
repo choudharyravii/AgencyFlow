@@ -17,26 +17,25 @@ class LogSignUp extends StatefulWidget {
 class _LogSignUpState extends State<LogSignUp> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: GestureDetector(
+    return GestureDetector(
       onTap: () {
         FocusScope.of(context).requestFocus(FocusNode());
       },
-      child: Common.gradiantliner(
-        Container(
-          width: double.infinity,
-          height: double.infinity,
-          margin: EdgeInsets.only(
-            top: Common.displayHeight(context) * 0.06,
-          ),
+      child: Scaffold(
+          body: Common.gradiantliner(
+        SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(
+                height: Common.displayHeight(context) * 0.07,
+              ),
               Image.asset('assets/Images/logo.png'),
               SizedBox(
                 height: Common.displayHeight(context) * 0.07,
               ),
-              Expanded(
+              Container(
+                height: Common.displayHeight(context) * 0.65,
                 child: DefaultTabController(
                   length: 2,
                   child: Column(
@@ -44,7 +43,7 @@ class _LogSignUpState extends State<LogSignUp> {
                     children: [
                       Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: Common.displayHeight(context) * 0.1,
+                          horizontal: Common.displayHeight(context) * 0.11,
                         ),
                         child: TabBar(
                           labelPadding: EdgeInsets.only(
@@ -56,7 +55,6 @@ class _LogSignUpState extends State<LogSignUp> {
                           onTap: (val) {
                             FocusScope.of(context).requestFocus(FocusNode());
                           },
-                          // ignore: prefer_const_literals_to_create_immutables
                           tabs: [
                             Text(
                               Constants.logInC,
@@ -73,7 +71,7 @@ class _LogSignUpState extends State<LogSignUp> {
                           ],
                         ),
                       ),
-                      Expanded(
+                      const Expanded(
                         child: TabBarView(
                           children: <Widget>[
                             Login_Screen(),
@@ -88,7 +86,7 @@ class _LogSignUpState extends State<LogSignUp> {
             ],
           ),
         ),
-      ),
-    ));
+      )),
+    );
   }
 }

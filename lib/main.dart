@@ -35,6 +35,7 @@ import 'package:agencyflow/Screens/splash_screen.dart';
 import 'package:agencyflow/Screens/start_chat_screen.dart';
 import 'package:agencyflow/Screens/term_condition_screen.dart';
 import 'package:agencyflow/Utilis/appcolor.dart';
+import 'package:agencyflow/Utilis/contants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -72,31 +73,31 @@ class MyApp extends StatelessWidget {
             title: 'Flutter Demo',
             theme: ThemeData(
               primarySwatch: Colors.blue,
-              fontFamily: 'Rubik',
+              fontFamily: Constants.fontbasic,
               textTheme: TextTheme(
                 headline1: TextStyle(
                     fontSize: 17, fontFamily: 'Futura', color: AppColors.white),
                 headline2: TextStyle(
                     fontSize: 16,
-                    fontFamily: 'Montserrat',
+                    fontFamily: Constants.fontbasic,
                     color: AppColors.hintText),
                 headline3: TextStyle(
                     fontSize: 21,
-                    fontFamily: 'Proxima Nova Black',
+                    fontFamily: Constants.fontbasic,
                     color: AppColors.buttonText,
                     fontWeight: FontWeight.bold),
                 headline4: TextStyle(
                     fontSize: 17,
-                    fontFamily: 'Montserrat',
+                    fontFamily: Constants.fontbasic,
                     color: AppColors.textfieldText),
                 headline5: TextStyle(
                     fontSize: 18,
-                    fontFamily: 'Proxima Nova Black',
+                    fontFamily: Constants.fontbasic,
                     color: AppColors.white,
                     fontWeight: FontWeight.bold),
                 headline6: TextStyle(
                     fontSize: 29,
-                    fontFamily: 'Gibson',
+                    fontFamily: Constants.fontbasic,
                     color: AppColors.white,
                     fontWeight: FontWeight.bold),
               ),
