@@ -77,8 +77,8 @@ class _InsideChatScreenState extends State<InsideChatScreen> {
                               height: Common.displayHeight(context) * 0.05,
                             ),
                             Container(
-                              width: Common.displayWidth(context) * 0.35,
-                              height: Common.displayHeight(context) * 0.05,
+                              width: 100,
+                              height: 29,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
                                   color: items.myList[index].color),

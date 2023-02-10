@@ -34,8 +34,11 @@ import 'package:agencyflow/Screens/right_list_screen.dart';
 import 'package:agencyflow/Screens/splash_screen.dart';
 import 'package:agencyflow/Screens/start_chat_screen.dart';
 import 'package:agencyflow/Screens/term_condition_screen.dart';
+import 'package:agencyflow/Utilis/SharedPrefrence.dart';
 import 'package:agencyflow/Utilis/appcolor.dart';
 import 'package:agencyflow/Utilis/contants.dart';
+import 'package:agencyflow/api/APIServices.dart';
+import 'package:agencyflow/api/Params.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -43,13 +46,33 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    callgetAuthTokenApi();
+    super.initState();
+  }
+callgetAuthTokenApi() async {
+    await ApiServices.getId();
+    var deviceId =
+        await CustomPreferences.getPreferences(Params.device_uniqueid);
+    print('Device Id : $deviceId');
+    await ApiServices.getAuthTokenApi();
+    var authToken = await CustomPreferences.getPreferences(Params.auth_token);
+    print('Auth Token : $authToken');
+  }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return 
+    MultiProvider(
         providers: [
           ChangeNotifierProvider.value(value: Feedusers()),
           ChangeNotifierProvider.value(value: messageusers()),
@@ -75,27 +98,27 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
               fontFamily: Constants.fontbasic,
               textTheme: TextTheme(
-                headline1: TextStyle(
+                displayLarge: TextStyle(
                     fontSize: 17, fontFamily: 'Futura', color: AppColors.white),
-                headline2: TextStyle(
+                displayMedium: TextStyle(
                     fontSize: 16,
                     fontFamily: Constants.fontbasic,
                     color: AppColors.hintText),
-                headline3: TextStyle(
+                displaySmall: TextStyle(
                     fontSize: 21,
                     fontFamily: Constants.fontbasic,
                     color: AppColors.buttonText,
                     fontWeight: FontWeight.bold),
-                headline4: TextStyle(
+                headlineMedium: TextStyle(
                     fontSize: 17,
                     fontFamily: Constants.fontbasic,
                     color: AppColors.textfieldText),
-                headline5: TextStyle(
+                headlineSmall: TextStyle(
                     fontSize: 18,
                     fontFamily: Constants.fontbasic,
                     color: AppColors.white,
                     fontWeight: FontWeight.bold),
-                headline6: TextStyle(
+                titleLarge: TextStyle(
                     fontSize: 29,
                     fontFamily: Constants.fontbasic,
                     color: AppColors.white,

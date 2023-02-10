@@ -29,6 +29,46 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
         SizedBox(
           width: Common.displayWidth(context) * 0.9,
           child: TextFormField(
+            controller: cnfrmpasswordController,
+            obscureText: hidden2,
+            cursorHeight: 20,
+            autofocus: false,
+            onTap: () {},
+            style: TextStyle(color: AppColors.black),
+            // controller: Controller,
+            decoration: InputDecoration(
+              fillColor: Colors.white,
+              filled: true,
+              hintText: "Name",
+              prefixIcon: const Icon(Icons.lock_open_outlined),
+              suffixIcon: Container(
+                  height: 10,
+                  width: 10,
+                  child: InkWell(
+                      child: Icon(hidden2 == true
+                          ? Icons.visibility_off
+                          : Icons.visibility),
+                      onTap: () {
+                        setState(() {
+                          hidden2 = !hidden2;
+                        });
+                      })),
+              prefixStyle: const TextStyle(color: Colors.white),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 22, horizontal: 10),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: const BorderSide(color: Colors.white, width: 2),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: Common.displayHeight(context) * 0.015,
+        ),
+        SizedBox(
+          width: Common.displayWidth(context) * 0.9,
+          child: TextFormField(
             controller: emailController,
             cursorHeight: 20,
             autofocus: false,
@@ -94,43 +134,6 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
         ),
         SizedBox(
           height: Common.displayHeight(context) * 0.015,
-        ),
-        SizedBox(
-          width: Common.displayWidth(context) * 0.9,
-          child: TextFormField(
-            controller: cnfrmpasswordController,
-            obscureText: hidden2,
-            cursorHeight: 20,
-            autofocus: false,
-            onTap: () {},
-            style: TextStyle(color: AppColors.black),
-            // controller: Controller,
-            decoration: InputDecoration(
-              fillColor: Colors.white,
-              filled: true,
-              hintText: Constants.ReenterPassword,
-              prefixIcon: const Icon(Icons.lock_open_outlined),
-              suffixIcon: Container(
-                  height: 10,
-                  width: 10,
-                  child: InkWell(
-                      child: Icon(hidden2 == true
-                          ? Icons.visibility_off
-                          : Icons.visibility),
-                      onTap: () {
-                        setState(() {
-                          hidden2 = !hidden2;
-                        });
-                      })),
-              prefixStyle: const TextStyle(color: Colors.white),
-              contentPadding:
-                  const EdgeInsets.symmetric(vertical: 22, horizontal: 10),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: Colors.white, width: 2),
-              ),
-            ),
-          ),
         ),
         SizedBox(
           height: Common.displayHeight(context) * 0.015,
