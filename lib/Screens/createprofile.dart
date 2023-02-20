@@ -1,11 +1,17 @@
+import 'package:agencyflow/Provider/user_managment_provider.dart';
 import 'package:agencyflow/Utilis/appcolor.dart';
 import 'package:agencyflow/Utilis/common.dart';
 import 'package:agencyflow/Utilis/contants.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 
 class ChnageProfile extends StatefulWidget {
-  const ChnageProfile({super.key});
+  // final String email;
+  // final String password;
+
+  const ChnageProfile({super.key,
+  //  required this.email, required this.password
+   });
 
   @override
   State<ChnageProfile> createState() => _ChnageProfileState();
@@ -114,7 +120,17 @@ class _ChnageProfileState extends State<ChnageProfile> {
                 context,
                 Constants.continuetext,
                 () {
-                  Navigator.pushNamed(context, '/AgencyVerification');
+                  // print("object");
+                  // Provider.of<UserManagementProvider>(context, listen: false)
+                  //     .userRegister(
+                  //       context,
+                  //       widget.email,
+                  //       widget.password
+
+                  //     );
+
+                  // registerApi
+                  // Navigator.pushNamed(context, '/AgencyVerification');
                 },
               ),
             ],

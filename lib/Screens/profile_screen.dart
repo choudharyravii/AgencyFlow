@@ -1,4 +1,5 @@
 import 'package:agencyflow/Provider/message.dart';
+import 'package:agencyflow/Provider/user_managment_provider.dart';
 import 'package:agencyflow/Utilis/appcolor.dart';
 import 'package:agencyflow/Utilis/common.dart';
 import 'package:agencyflow/Utilis/contants.dart';
@@ -171,7 +172,8 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                     trailing: Icon(Icons.arrow_forward_ios_rounded)),
                 ListTile(
                     onTap: () {
-                      Navigator.pushNamed(context, "/loginsignup");
+                      Provider.of<UserManagementProvider>(context,listen: false)
+                          .logoutprovider(context);
                     },
                     title: Text(
                       "Logout",

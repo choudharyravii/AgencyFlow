@@ -1,8 +1,10 @@
+import 'package:agencyflow/Provider/user_managment_provider.dart';
 import 'package:agencyflow/Utilis/appcolor.dart';
 import 'package:agencyflow/Utilis/common.dart';
 import 'package:agencyflow/Utilis/contants.dart';
 import 'package:agencyflow/Utilis/validator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -85,7 +87,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     fillColor: Colors.white,
                     filled: true,
                     hintText: Constants.email,
-                    
                     prefixIcon: const Icon(Icons.email_outlined),
                     suffixIcon: SizedBox(
                         height: 10, width: 10, child: InkWell(onTap: () {})),
@@ -124,7 +125,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     } else if (!Validator.isValidEmail(emailController.text.trim())) {
       Common.showSnackBar(Constants.validEmail, context);
     } else {
-      Navigator.pushNamed(context, '/ChangePassword');
+      Provider.of<UserManagementProvider>(context, listen: false)
+          .forgotPasswordProcess(context, emailController.text);
     }
   }
 }

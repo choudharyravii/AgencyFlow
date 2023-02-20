@@ -40,14 +40,20 @@ import 'package:agencyflow/Utilis/appcolor.dart';
 import 'package:agencyflow/Utilis/contants.dart';
 import 'package:agencyflow/api/APIServices.dart';
 import 'package:agencyflow/api/Params.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  // String? isLoggedIn = await CustomPreferences.getPreferences('userlogind');
+  // print(isLoggedIn);
+  runApp(const MyApp(
+      // initialScreen: isLoggedIn == 'yes' ? '/MainScreen' : "/"
+      ));
 }
 
 class MyApp extends StatefulWidget {
+  // final String? initialScreen;
   const MyApp({super.key});
 
   @override
@@ -58,23 +64,39 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     callgetAuthTokenApi();
+    // logincheck();
     super.initState();
   }
-callgetAuthTokenApi() async {
+
+  String? userLoggedIn;
+
+  callgetAuthTokenApi() async {
     await ApiServices.getId();
+    var devicetype = await CustomPreferences.getPreferences(Params.device_type);
+    if (kDebugMode) {
+      print('Device Token : ${Params.device_token} ');
+    }
     var deviceId =
         await CustomPreferences.getPreferences(Params.device_uniqueid);
-    print('Device Id : $deviceId');
+    if (kDebugMode) {
+      print('Device Id : $deviceId');
+    }
     await ApiServices.getAuthTokenApi();
     var authToken = await CustomPreferences.getPreferences(Params.auth_token);
-    print('Auth Token : $authToken');
-    // await ApiServices.versionControlApi(navigatorKey);
+    if (kDebugMode) {
+      print('Auth Token : $authToken');
+    }
+    var devicemodelname =
+        await CustomPreferences.getPreferences(Params.devicemodelname);
+    if (kDebugMode) {
+      print('device model name : $devicemodelname');
+    }
   }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return 
-    MultiProvider(
+    return MultiProvider(
         providers: [
           ChangeNotifierProvider.value(value: Feedusers()),
           ChangeNotifierProvider.value(value: messageusers()),
@@ -132,14 +154,14 @@ callgetAuthTokenApi() async {
             routes: {
               '/': (context) => const SplashScreen(),
               '/loginsignup': (context) => const LogSignUp(),
-              '/Verfication': (context) => const Verfication(),
+              // '/Verfication': (context) =>  Verfication(otp: otp),
               '/ForgotPassword': (context) => const ForgotPassword(),
-              '/ChangePassword': (context) => const ChangePassword(),
+              // '/ChangePassword': (context) => const ChangePassword(),
               // when we forgot password
               '/ChangePasswordScreen': (context) =>
                   const ChangePasswordScreen(),
               // when we change password for security
-              '/ChnageProfile': (context) => const ChnageProfile(),
+              // '/ChnageProfile': (context) => const ChnageProfile(),
               '/AgencyVerification': (context) => const AgencyVerification(),
               '/AgencyUnverified': (context) => const AgencyUnverified(),
               '/Agencyverified': (context) => const Agencyverified(),
@@ -167,7 +189,7 @@ callgetAuthTokenApi() async {
               '/OfficerRequestScreenNew': (context) =>
                   const OfficerRequestScreenNew(),
             },
-            // home: const SplashScreen(),
+            // home: widget.initialScreen,
           ),
         ));
   }

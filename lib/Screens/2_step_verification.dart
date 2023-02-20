@@ -1,12 +1,21 @@
+import 'package:agencyflow/Provider/user_managment_provider.dart';
+import 'package:agencyflow/Screens/createprofile.dart';
 import 'package:agencyflow/Utilis/appcolor.dart';
 import 'package:agencyflow/Utilis/common.dart';
 import 'package:agencyflow/Utilis/contants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pinput/pinput.dart';
+import 'package:provider/provider.dart';
 
 class Verfication extends StatefulWidget {
-  const Verfication({super.key});
+  final String otp;
+  final String email;
+  final String password;
+  const Verfication({
+    super.key,
+    required this.otp, required this.email, required this.password,
+  });
 
   @override
   State<Verfication> createState() => _VerficationState();
@@ -127,7 +136,23 @@ class _VerficationState extends State<Verfication> {
                 context,
                 Constants.continuetext,
                 () {
-                  Navigator.pushNamed(context, '/ChnageProfile');
+                  if (pinController.text == widget.otp) {
+                     Provider.of<UserManagementProvider>(context, listen: false)
+                      .userRegister(
+                        context,
+                        widget.email,
+                        widget.password,
+                        widget.otp,
+
+                      );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ChnageProfile()),
+                    );
+                    // Navigator.pushNamed(context, '/ChnageProfile');
+                  } else {
+                    Common.showSnackBar('Otp is not correct', context);
+                  }
                 },
               ),
             ],

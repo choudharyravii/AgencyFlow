@@ -9,17 +9,17 @@ class CustomPreferences {
   }
 
   //Save particular bool value to sp
-  static setPrerefencesBool(String key, bool value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool(key, value);
-  }
+  // static setPrerefencesBool(String key, bool value) async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   prefs.setBool(key, value);
+  // }
 
-  //Get particular key value to sp
-  static getPreferencesBool(String key) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool boolValue = prefs.getBool(key)!;
-    return boolValue;
-  }
+  // //Get particular key value to sp
+  // static getPreferencesBool(String key) async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   bool boolValue = prefs.getBool(key)!;
+  //   return boolValue;
+  // }
 
   //Get particular key value to sp
   static getPreferences(String key) async {
@@ -29,26 +29,26 @@ class CustomPreferences {
   }
 
   //Remove particular key value from sp
-  static remove(String key) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.remove(key);
-  }
+  // static remove(String key) async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   prefs.remove(key);
+  // }
 
-  //Clear all key value from sp
-  static clearAll() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.clear();
-  }
+  // //Clear all key value from sp
+  // static clearAll() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   prefs.clear();
+  // }
 
-  //read key value to sp
-  static read(String key) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return json.decode(prefs.getString(key).toString());
-  }
+  // //read key value to sp
+  // static read(String key) async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   return json.decode(prefs.getString(key).toString());
+  // }
 
-  //save key value to sp
-  static save(String key, value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString(key, json.encode(value));
-  }
+  // //save key value to sp
+  // static save(String key, value) async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   prefs.setString(key, json.encode(value));
+  // }
 }

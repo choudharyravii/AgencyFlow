@@ -1,12 +1,12 @@
 
 import 'dart:convert';
 
-CheckUserModel checkUserModelFromJson(String str) => CheckUserModel.fromJson(json.decode(str));
+ForgetPasswordModel forgetPasswordFromJson(String str) => ForgetPasswordModel.fromJson(json.decode(str));
 
-String checkUserModelToJson(CheckUserModel data) => json.encode(data.toJson());
+String forgetPasswordToJson(ForgetPasswordModel data) => json.encode(data.toJson());
 
-class CheckUserModel {
-    CheckUserModel({
+class ForgetPasswordModel {
+    ForgetPasswordModel({
         this.status,
         this.message,
         this.otp,
@@ -16,7 +16,7 @@ class CheckUserModel {
     String? message;
     int? otp;
 
-    factory CheckUserModel.fromJson(Map<String,dynamic> json) => CheckUserModel(
+    factory ForgetPasswordModel.fromJson(Map<String, dynamic> json) => ForgetPasswordModel(
         status: json["status"],
         message: json["message"],
         otp: json["otp"],

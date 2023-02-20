@@ -15,8 +15,9 @@ class SignUp_Screen extends StatefulWidget {
 
 class _SignUp_ScreenState extends State<SignUp_Screen> {
   final emailController = TextEditingController();
+  final nameController = TextEditingController();
   final passwordController = TextEditingController();
-  final cnfrmpasswordController = TextEditingController();
+  // final cnfrmpasswordController = TextEditingController();
   bool hidden = true;
   bool hidden2 = true;
   @override
@@ -31,30 +32,16 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
         SizedBox(
           width: Common.displayWidth(context) * 0.9,
           child: TextFormField(
-            controller: cnfrmpasswordController,
-            obscureText: hidden2,
+            controller: nameController,
             cursorHeight: 20,
             autofocus: false,
             onTap: () {},
             style: TextStyle(color: AppColors.black),
-            // controller: Controller,
             decoration: InputDecoration(
               fillColor: Colors.white,
               filled: true,
               hintText: "Name",
               prefixIcon: const Icon(Icons.lock_open_outlined),
-              suffixIcon: Container(
-                  height: 10,
-                  width: 10,
-                  child: InkWell(
-                      child: Icon(hidden2 == true
-                          ? Icons.visibility_off
-                          : Icons.visibility),
-                      onTap: () {
-                        setState(() {
-                          hidden2 = !hidden2;
-                        });
-                      })),
               prefixStyle: const TextStyle(color: Colors.white),
               contentPadding:
                   const EdgeInsets.symmetric(vertical: 22, horizontal: 10),
@@ -106,7 +93,6 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
             autofocus: false,
             onTap: () {},
             style: TextStyle(color: AppColors.black),
-            // controller: Controller,
             decoration: InputDecoration(
               fillColor: Colors.white,
               filled: true,
@@ -170,16 +156,14 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
           context,
           Constants.signUp,
           () {
-            // buildSignup();
-             Provider.of<UserManagementProvider>(context, listen: false)
-          .checkUserProcess(
-        context,
-        emailController.text,
-        passwordController.text,
-        // countryCode,
-        // phoneController.text,
-      
-      );
+            buildSignup();
+            //      Provider.of<UserManagementProvider>(context, listen: false)
+            //   .checkUserProcess(
+            // context,
+            // emailController.text,
+            // passwordController.text,
+            // countryCode,
+            // phoneController.text,
           },
         ),
       ],
@@ -200,7 +184,7 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
     //  else if (cnfrmpasswordController.text != passwordController.text) {
     //   Common.showSnackBar(Constants.cnfrmpass, context);
     // }
-     else if (Validator.isValidPassword(passwordController.text)) {
+    else if (Validator.isValidPassword(passwordController.text)) {
       Common.showSnackBar(Constants.passwordShouldContain, context);
     } else if (passwordController.text.length > 17) {
       Common.showSnackBar(Constants.passLessThan, context);
@@ -212,9 +196,7 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
         passwordController.text,
         // countryCode,
         // phoneController.text,
-      
       );
-
       // Navigator.pushNamed(context, '/Verfication');
     }
   }

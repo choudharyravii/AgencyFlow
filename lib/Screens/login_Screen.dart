@@ -1,8 +1,10 @@
+import 'package:agencyflow/Provider/user_managment_provider.dart';
 import 'package:agencyflow/Utilis/appcolor.dart';
 import 'package:agencyflow/Utilis/common.dart';
 import 'package:agencyflow/Utilis/contants.dart';
 import 'package:agencyflow/Utilis/validator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Login_Screen extends StatefulWidget {
   const Login_Screen({super.key});
@@ -126,7 +128,15 @@ class _Login_ScreenState extends State<Login_Screen> {
           context,
           Constants.logIn,
           () {
-            buildSignup();
+            Provider.of<UserManagementProvider>(context, listen: false)
+                .userLogin(
+              context,
+              emailController.text,
+              passwordController.text,
+              // countryCode,
+              // phoneController.text,
+            );
+            // buildSignup();
           },
         ),
         SizedBox(

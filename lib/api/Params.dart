@@ -1,5 +1,6 @@
 class Params {
   static final String notificationToken = 'notification_token';
+  static final String user_role = 'user_role';
 
   static final String access_token = 'access_token';
   static final String auth_token = 'auth_token';
@@ -28,6 +29,10 @@ class Params {
   static final String new_confirmation = 'new_confirmation';
   static final String is_two_factoron = 'is_two_factoron';
   static final String authorization = 'Authorization';
+  static final String devicename = 'devicename';
+  static final String devicemodelname = 'devicemodelname';
+  static final String Bearer = 'Bearer';
+
 
   ///================= M3 ==============
 

@@ -13,10 +13,10 @@ class Urls {
   static final String checkUserUrl = 'check-user';
   static final String otpVerifyUrl = 'verify-otp';
   static final String rResendOtpUrl = 'resend-otp';
-  static final String signupUrl = 'register';
+  static final String signupUrl = 'sign-up';
   static final String loginUrl = 'login';
-  static final String forgotPasswordUrl = 'forgot-password';
-  static final String resetPasswordUrl = 'reset-password';
+  static final String forgotpassword = 'forgot-password';
+  static final String resetpassword = 'reset-password';
   static final String createProfileUrl = 'update-profile';
   static final String changePasswordUrl = 'change-password';
   static final String logoutUrl = 'logout';

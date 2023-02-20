@@ -1,8 +1,10 @@
+import 'package:agencyflow/Provider/user_managment_provider.dart';
 import 'package:agencyflow/Utilis/appcolor.dart';
 import 'package:agencyflow/Utilis/common.dart';
 import 'package:agencyflow/Utilis/contants.dart';
 import 'package:agencyflow/Utilis/validator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});
@@ -162,6 +164,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               Constants.save,
               () {
                 buildSignup();
+                // print("object");
                 // Navigator.pushNamed(context, '/Verfication');
               },
             ),
@@ -189,6 +192,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     } else if (passwordController.text.length > 17) {
       Common.showSnackBar(Constants.passLessThan, context);
     } else {
+      Provider.of<UserManagementProvider>(context,listen: false).changePasswordProcess(
+          context,
+          oldController.text,
+          passwordController.text,
+          cnfrmpasswordController.text);
       // Navigator.pushNamed(context, '/Verfication');
     }
   }

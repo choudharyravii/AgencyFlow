@@ -1,11 +1,15 @@
+import 'package:agencyflow/Provider/user_managment_provider.dart';
 import 'package:agencyflow/Utilis/appcolor.dart';
 import 'package:agencyflow/Utilis/common.dart';
 import 'package:agencyflow/Utilis/contants.dart';
 import 'package:agencyflow/Utilis/validator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ChangePassword extends StatefulWidget {
-  const ChangePassword({super.key});
+  String email;
+  String otp;
+  ChangePassword({super.key, required this.email, required this.otp});
 
   @override
   State<ChangePassword> createState() => _ChangePasswordState();
@@ -188,6 +192,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 context,
                 Constants.sendCode,
                 () {
+                  buildSignup();
                   // Navigator.pushNamed(context, '/Verfication');
                 },
               ),
@@ -214,7 +219,18 @@ class _ChangePasswordState extends State<ChangePassword> {
     } else if (passwordController.text.length > 17) {
       Common.showSnackBar(Constants.passLessThan, context);
     } else {
-      Navigator.pushNamed(context, '/Verfication');
+      if (widget.otp == codeController.text) {
+        Provider.of<UserManagementProvider>(context, listen: false)
+            .resetPasswordProcess(
+          context,
+          widget.email,
+          passwordController.text,
+          widget.otp,
+        );
+      } else {
+        Common.showSnackBar("Please Enter A Valid Code", context);
+      }
+      // Navigator.pushNamed(context, '/Verfication');
     }
   }
 }
