@@ -1,8 +1,10 @@
+import 'package:agencyflow/Provider/user_managment_provider.dart';
 import 'package:agencyflow/Utilis/appcolor.dart';
 import 'package:agencyflow/Utilis/common.dart';
 import 'package:agencyflow/Utilis/contants.dart';
 import 'package:agencyflow/Utilis/validator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SignUp_Screen extends StatefulWidget {
   const SignUp_Screen({super.key});
@@ -168,7 +170,16 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
           context,
           Constants.signUp,
           () {
-            buildSignup();
+            // buildSignup();
+             Provider.of<UserManagementProvider>(context, listen: false)
+          .checkUserProcess(
+        context,
+        emailController.text,
+        passwordController.text,
+        // countryCode,
+        // phoneController.text,
+      
+      );
           },
         ),
       ],
@@ -185,14 +196,26 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
       Common.showSnackBar(Constants.emptyPassword, context);
     } else if (passwordController.text.length < 8) {
       Common.showSnackBar(Constants.passGreaterThan, context);
-    } else if (cnfrmpasswordController.text != passwordController.text) {
-      Common.showSnackBar(Constants.cnfrmpass, context);
-    } else if (Validator.isValidPassword(passwordController.text)) {
+    }
+    //  else if (cnfrmpasswordController.text != passwordController.text) {
+    //   Common.showSnackBar(Constants.cnfrmpass, context);
+    // }
+     else if (Validator.isValidPassword(passwordController.text)) {
       Common.showSnackBar(Constants.passwordShouldContain, context);
     } else if (passwordController.text.length > 17) {
       Common.showSnackBar(Constants.passLessThan, context);
     } else {
-      Navigator.pushNamed(context, '/Verfication');
+      Provider.of<UserManagementProvider>(context, listen: false)
+          .checkUserProcess(
+        context,
+        emailController.text,
+        passwordController.text,
+        // countryCode,
+        // phoneController.text,
+      
+      );
+
+      // Navigator.pushNamed(context, '/Verfication');
     }
   }
 }

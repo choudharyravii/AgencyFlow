@@ -5,6 +5,7 @@ import 'package:agencyflow/Provider/laws_list.dart';
 import 'package:agencyflow/Provider/message.dart';
 import 'package:agencyflow/Provider/office_managment.dart';
 import 'package:agencyflow/Provider/personal_notes_list.dart';
+import 'package:agencyflow/Provider/user_managment_provider.dart';
 import 'package:agencyflow/Screens/2_step_verification.dart';
 import 'package:agencyflow/Screens/Officer_Request_Screen_New.dart';
 import 'package:agencyflow/Screens/aboutus_screen.dart';
@@ -67,6 +68,7 @@ callgetAuthTokenApi() async {
     await ApiServices.getAuthTokenApi();
     var authToken = await CustomPreferences.getPreferences(Params.auth_token);
     print('Auth Token : $authToken');
+    // await ApiServices.versionControlApi(navigatorKey);
   }
   // This widget is the root of your application.
   @override
@@ -82,6 +84,7 @@ callgetAuthTokenApi() async {
           ChangeNotifierProvider.value(value: PersonalNotesLists()),
           ChangeNotifierProvider.value(value: InsideChats()),
           ChangeNotifierProvider.value(value: OfficeLists()),
+          ChangeNotifierProvider.value(value: UserManagementProvider()),
         ],
         child: GestureDetector(
           onTap: () {

@@ -10,7 +10,7 @@ class Urls {
 
   ////// User Management M2 Api Urls ///////////
   static final String getAcessKeyUrl = 'access-token';
-  static final String checkUserUrl = 'user-check';
+  static final String checkUserUrl = 'check-user';
   static final String otpVerifyUrl = 'verify-otp';
   static final String rResendOtpUrl = 'resend-otp';
   static final String signupUrl = 'register';
