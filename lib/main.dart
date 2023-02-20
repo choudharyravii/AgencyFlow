@@ -5,6 +5,7 @@ import 'package:agencyflow/Provider/laws_list.dart';
 import 'package:agencyflow/Provider/message.dart';
 import 'package:agencyflow/Provider/office_managment.dart';
 import 'package:agencyflow/Provider/personal_notes_list.dart';
+import 'package:agencyflow/Provider/user_managment_provider.dart';
 import 'package:agencyflow/Screens/2_step_verification.dart';
 import 'package:agencyflow/Screens/Officer_Request_Screen_New.dart';
 import 'package:agencyflow/Screens/aboutus_screen.dart';
@@ -34,8 +35,11 @@ import 'package:agencyflow/Screens/right_list_screen.dart';
 import 'package:agencyflow/Screens/splash_screen.dart';
 import 'package:agencyflow/Screens/start_chat_screen.dart';
 import 'package:agencyflow/Screens/term_condition_screen.dart';
+import 'package:agencyflow/Utilis/SharedPrefrence.dart';
 import 'package:agencyflow/Utilis/appcolor.dart';
 import 'package:agencyflow/Utilis/contants.dart';
+import 'package:agencyflow/api/APIServices.dart';
+import 'package:agencyflow/api/Params.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -43,13 +47,34 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    callgetAuthTokenApi();
+    super.initState();
+  }
+callgetAuthTokenApi() async {
+    await ApiServices.getId();
+    var deviceId =
+        await CustomPreferences.getPreferences(Params.device_uniqueid);
+    print('Device Id : $deviceId');
+    await ApiServices.getAuthTokenApi();
+    var authToken = await CustomPreferences.getPreferences(Params.auth_token);
+    print('Auth Token : $authToken');
+    // await ApiServices.versionControlApi(navigatorKey);
+  }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return 
+    MultiProvider(
         providers: [
           ChangeNotifierProvider.value(value: Feedusers()),
           ChangeNotifierProvider.value(value: messageusers()),
@@ -59,6 +84,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider.value(value: PersonalNotesLists()),
           ChangeNotifierProvider.value(value: InsideChats()),
           ChangeNotifierProvider.value(value: OfficeLists()),
+          ChangeNotifierProvider.value(value: UserManagementProvider()),
         ],
         child: GestureDetector(
           onTap: () {
@@ -75,27 +101,27 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
               fontFamily: Constants.fontbasic,
               textTheme: TextTheme(
-                headline1: TextStyle(
+                displayLarge: TextStyle(
                     fontSize: 17, fontFamily: 'Futura', color: AppColors.white),
-                headline2: TextStyle(
+                displayMedium: TextStyle(
                     fontSize: 16,
                     fontFamily: Constants.fontbasic,
                     color: AppColors.hintText),
-                headline3: TextStyle(
+                displaySmall: TextStyle(
                     fontSize: 21,
                     fontFamily: Constants.fontbasic,
                     color: AppColors.buttonText,
                     fontWeight: FontWeight.bold),
-                headline4: TextStyle(
+                headlineMedium: TextStyle(
                     fontSize: 17,
                     fontFamily: Constants.fontbasic,
                     color: AppColors.textfieldText),
-                headline5: TextStyle(
+                headlineSmall: TextStyle(
                     fontSize: 18,
                     fontFamily: Constants.fontbasic,
                     color: AppColors.white,
                     fontWeight: FontWeight.bold),
-                headline6: TextStyle(
+                titleLarge: TextStyle(
                     fontSize: 29,
                     fontFamily: Constants.fontbasic,
                     color: AppColors.white,

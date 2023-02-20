@@ -1,8 +1,10 @@
+import 'package:agencyflow/Provider/user_managment_provider.dart';
 import 'package:agencyflow/Utilis/appcolor.dart';
 import 'package:agencyflow/Utilis/common.dart';
 import 'package:agencyflow/Utilis/contants.dart';
 import 'package:agencyflow/Utilis/validator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SignUp_Screen extends StatefulWidget {
   const SignUp_Screen({super.key});
@@ -25,6 +27,46 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
       children: [
         SizedBox(
           height: Common.displayHeight(context) * 0.05,
+        ),
+        SizedBox(
+          width: Common.displayWidth(context) * 0.9,
+          child: TextFormField(
+            controller: cnfrmpasswordController,
+            obscureText: hidden2,
+            cursorHeight: 20,
+            autofocus: false,
+            onTap: () {},
+            style: TextStyle(color: AppColors.black),
+            // controller: Controller,
+            decoration: InputDecoration(
+              fillColor: Colors.white,
+              filled: true,
+              hintText: "Name",
+              prefixIcon: const Icon(Icons.lock_open_outlined),
+              suffixIcon: Container(
+                  height: 10,
+                  width: 10,
+                  child: InkWell(
+                      child: Icon(hidden2 == true
+                          ? Icons.visibility_off
+                          : Icons.visibility),
+                      onTap: () {
+                        setState(() {
+                          hidden2 = !hidden2;
+                        });
+                      })),
+              prefixStyle: const TextStyle(color: Colors.white),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 22, horizontal: 10),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: const BorderSide(color: Colors.white, width: 2),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: Common.displayHeight(context) * 0.015,
         ),
         SizedBox(
           width: Common.displayWidth(context) * 0.9,
@@ -96,43 +138,6 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
           height: Common.displayHeight(context) * 0.015,
         ),
         SizedBox(
-          width: Common.displayWidth(context) * 0.9,
-          child: TextFormField(
-            controller: cnfrmpasswordController,
-            obscureText: hidden2,
-            cursorHeight: 20,
-            autofocus: false,
-            onTap: () {},
-            style: TextStyle(color: AppColors.black),
-            // controller: Controller,
-            decoration: InputDecoration(
-              fillColor: Colors.white,
-              filled: true,
-              hintText: Constants.ReenterPassword,
-              prefixIcon: const Icon(Icons.lock_open_outlined),
-              suffixIcon: Container(
-                  height: 10,
-                  width: 10,
-                  child: InkWell(
-                      child: Icon(hidden2 == true
-                          ? Icons.visibility_off
-                          : Icons.visibility),
-                      onTap: () {
-                        setState(() {
-                          hidden2 = !hidden2;
-                        });
-                      })),
-              prefixStyle: const TextStyle(color: Colors.white),
-              contentPadding:
-                  const EdgeInsets.symmetric(vertical: 22, horizontal: 10),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: Colors.white, width: 2),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
           height: Common.displayHeight(context) * 0.015,
         ),
         Row(
@@ -165,7 +170,16 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
           context,
           Constants.signUp,
           () {
-            buildSignup();
+            // buildSignup();
+             Provider.of<UserManagementProvider>(context, listen: false)
+          .checkUserProcess(
+        context,
+        emailController.text,
+        passwordController.text,
+        // countryCode,
+        // phoneController.text,
+      
+      );
           },
         ),
       ],
@@ -182,14 +196,26 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
       Common.showSnackBar(Constants.emptyPassword, context);
     } else if (passwordController.text.length < 8) {
       Common.showSnackBar(Constants.passGreaterThan, context);
-    } else if (cnfrmpasswordController.text != passwordController.text) {
-      Common.showSnackBar(Constants.cnfrmpass, context);
-    } else if (Validator.isValidPassword(passwordController.text)) {
+    }
+    //  else if (cnfrmpasswordController.text != passwordController.text) {
+    //   Common.showSnackBar(Constants.cnfrmpass, context);
+    // }
+     else if (Validator.isValidPassword(passwordController.text)) {
       Common.showSnackBar(Constants.passwordShouldContain, context);
     } else if (passwordController.text.length > 17) {
       Common.showSnackBar(Constants.passLessThan, context);
     } else {
-      Navigator.pushNamed(context, '/Verfication');
+      Provider.of<UserManagementProvider>(context, listen: false)
+          .checkUserProcess(
+        context,
+        emailController.text,
+        passwordController.text,
+        // countryCode,
+        // phoneController.text,
+      
+      );
+
+      // Navigator.pushNamed(context, '/Verfication');
     }
   }
 }

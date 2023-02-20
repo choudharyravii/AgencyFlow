@@ -67,9 +67,10 @@ Widget _createBottomNavigationBar(
       backgroundColor: Colors.transparent,
 
       //showSelectedLabels: false,
-      showUnselectedLabels: false,
+      showUnselectedLabels: true,
+      //its for show hide labels
+      unselectedItemColor: AppColors.grey5,
       // unselectedItemColor: Colors.white,
-
       //fixedColor: AppColors.yellowButton,
       // selectedItemColor: AppColors.white,
       //selectedIconTheme: IconThemeData.,
