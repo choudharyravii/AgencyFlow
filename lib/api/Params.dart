@@ -1,4 +1,7 @@
 class Params {
+
+    static final String devicetokenvalue = '123456789';
+
   static final String notificationToken = 'notification_token';
   static final String user_role = 'user_role';
 

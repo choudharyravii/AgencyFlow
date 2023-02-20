@@ -335,16 +335,15 @@ class ApiServices {
     BuildContext context,
   ) async {
     var authToken = await CustomPreferences.getPreferences(Params.auth_token);
+    var logintoken = await CustomPreferences.getPreferences(Params.Bearer);
+    var devicetype = await CustomPreferences.getPreferences(Params.device_type);
     try {
       final response = await http.post(
         Uri.parse(Urls.baseUrl + Urls.logoutUrl),
-        body: {
-          'device_token': Params.device_token,
-          'device_type': Params.device_type
-        },
+        body: {'device_token': Params.devicetokenvalue, 'device_type': devicetype},
         headers: {
           Params.authorization:
-              'Basic aGV5X21pcmFuZGE6MFU5dzg0YXoxeUhDWDMyVFhhekw= Bearer ${Params.Bearer}',
+              'Basic aGV5X21pcmFuZGE6MFU5dzg0YXoxeUhDWDMyVFhhekw= Bearer $logintoken',
           Params.auth_token: authToken,
         },
       );
